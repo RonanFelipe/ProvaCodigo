@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 
+from provaDeConceito import settings
+
 # Create your models here.
 
 
@@ -14,7 +16,7 @@ class MyUserManager(BaseUserManager):
             password=None
     ):
         """
-        Cria e salva um usuário com o cpf, primeiro nome, último nome, data de nascimento e senha.
+        Cria e salva um usuário com o email, primeiro nome, último nome, data de nascimento e senha.
         """
         if not email:
             raise ValueError("Nome de usuário deve ser um email")
@@ -37,7 +39,7 @@ class MyUserManager(BaseUserManager):
             password
     ):
         """
-        Cria e salva superuser, com cpf, primeiro nome, último nome, data de nascimento e senha.
+        Cria e salva superuser, com email, primeiro nome, último nome, data de nascimento e senha.
         """
         user = self.create_user(
             email,
@@ -84,3 +86,27 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     def is_staff(self):
         """Se o usuário for um membro do staff?"""
         return self.is_admin
+
+
+class Empresa(models.Model):
+    empresa = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cnpj = models.BigIntegerField(verbose_name="CNPJ da empresa")
+    atividade = models.CharField(verbose_name="Atividade principal da empresa", max_length=255)
+
+
+class Candidato(models.Model):
+    ESCOLARIDADE = (
+        ("1", "Sem escolaridade"),
+        ("2", "Primário"),
+        ("3", "Ensino Fundamental"),
+        ("4", "Ensino Médio"),
+        ("5", "Ensino Superior"),
+        ("6", "Pos Graduação ou MBA"),
+        ("7", "Mestrado"),
+        ("8", "Doutorado"),
+        ("9", "PHD - Pós Doutorado")
+    )
+    candidato = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    pretensao_salarial = models.FloatField(verbose_name="Pretensão salarial")
+    experiencia = models.TextField(verbose_name="Experiência do usuário", max_length=500)
+    escolaridade = models.CharField(verbose_name="Nível de escolaridade", max_length=1, choices=ESCOLARIDADE)
