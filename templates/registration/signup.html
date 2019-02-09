@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block  content %}
+    <h3>Cadastro de Usuário</h3>
+    <p>Selecione o tipo de conta que você deseja criar</p>
+    <a href="{% url 'empresa_signup' %}">Representante de uma empresa</a>
+    <a href="{% url 'candidato_signup' %}">Candidato a procura de vagas</a>
+{% endblock %}

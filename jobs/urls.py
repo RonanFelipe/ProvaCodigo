@@ -3,5 +3,5 @@ from . import views as jobs_views
 
 
 urlpatterns = [
-    path('', jobs_views.index, name='home'),
+    path('', jobs_views.index, name='index'),
 ]
