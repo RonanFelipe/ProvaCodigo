@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %} <title>Home Jobs</title> {% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <script src="{% static "js/script.js" %}"></script>
+</head>
+<body>
+    <header>
+        <h1>Jobs</h1>
+    </header>
+    <main>
+        {% block content %}
+            <h4>Empresa ou Cândidato</h4>
+        {% endblock %}
+    </main>
+</body>
+</html>
