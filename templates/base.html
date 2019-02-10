@@ -2,21 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block title %} <title>Home Jobs</title> {% endblock %}
     {% load static %}
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <script src="{% static "js/script.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/bulma.css" %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
     <header>
-        <h1>Jobs</h1>
+        <section class="hero is-dark">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Jobs for Everyone!
+                    </h1>
+                    <h2 class="subtitle">
+                        <br>
+                        Empresa - Ajudamos você a encontrar o melhor funcionário. <br>
+                        Candidato - Ajudamos você a encontrar o melhor emprego.
+                    </h2>
+                </div>
+            </div>
+        </section>
     </header>
     <main>
         {% block content %}
-            <h4>Empresa ou Candidato</h4>
-            <p>Selecione o tipo de conta que você deseja criar</p>
-            <a href="{% url 'empresa_signup' %}">Representante de uma empresa</a>
-            <a href="{% url 'candidato_signup' %}">Candidato a procura de vagas</a>
+            <section class="section">
+                <div class="container">
+                    <h2 class="title">Empresa ou Candidato?</h2>
+                    <h2 class="subtitle">Selecione o tipo de conta que você deseja criar</h2>
+                    <a class="button is-link" href="{% url 'empresa_signup' %}">Representante de uma empresa</a>
+                    <a class="button is-success" href="{% url 'candidato_signup' %}">Candidato a procura de vagas</a>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <h2 class="title">Já possui uma conta?</h2>
+                    <h2 class="subtitle">Faça login</h2>
+                    <a class="button is-warning" href="{% url 'login' %}">Login</a>
+                </div>
+            </section>
         {% endblock %}
     </main>
 </body>
