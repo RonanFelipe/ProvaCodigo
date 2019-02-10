@@ -14,6 +14,9 @@
     <main>
         {% block content %}
             <h4>Empresa ou Candidato</h4>
+            <p>Selecione o tipo de conta que você deseja criar</p>
+            <a href="{% url 'empresa_signup' %}">Representante de uma empresa</a>
+            <a href="{% url 'candidato_signup' %}">Candidato a procura de vagas</a>
         {% endblock %}
     </main>
 </body>
