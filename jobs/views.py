@@ -57,7 +57,6 @@ def signup_candidato(request):
 
 class VagaListView(generic.ListView):
     model = Vaga
-    paginate_by = 10
 
 
 class VagaDetail(generic.DetailView):
