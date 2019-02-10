@@ -1,7 +1,12 @@
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import generic
+from django.views.generic import CreateView, UpdateView, DeleteView
+
 from .forms import SignUpForm, SignUpFormEmpresa, SignUpFormCandidato
+from .models import Vaga
 
 
 # Create your views here.
@@ -48,3 +53,27 @@ def signup_candidato(request):
         form1 = SignUpForm()
         form2 = SignUpFormCandidato()
     return render(request, 'createCandidato.html', {'form1': form1, 'form2': form2})
+
+
+class VagaListView(generic.ListView):
+    model = Vaga
+    paginate_by = 10
+
+
+class VagaDetail(generic.DetailView):
+    model = Vaga
+
+
+class CreateVaga(CreateView):
+    model = Vaga
+    fields = '__all__'
+
+
+class UpdateVaga(UpdateView):
+    model = Vaga
+    fields = ['nome_vaga', 'faixa_salaria', 'requisitos', 'escolaridade_min']
+
+
+class DeleteVaga(DeleteView):
+    model = Vaga
+    success_url = reverse_lazy('vagas')
