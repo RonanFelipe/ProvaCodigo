@@ -109,4 +109,27 @@ class Candidato(models.Model):
     candidato = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     pretensao_salarial = models.FloatField(verbose_name="Pretensão salarial")
     experiencia = models.TextField(verbose_name="Experiência do usuário", max_length=500)
-    escolaridade = models.CharField(verbose_name="Nível de escolaridade", max_length=1, choices=ESCOLARIDADE, blank=True, null=True)
+    escolaridade = models.CharField(verbose_name="Nível de escolaridade", max_length=1, choices=ESCOLARIDADE,
+                                    blank=True, null=True)
+
+
+class Vaga(models.Model):
+    FAIXA_SALARIAL = (
+        ("1", "Até R$ 1000,00"),
+        ("2", "De R$ 1000,00 a R$ 2000,00"),
+        ("3", "De R$ 2000,00 a R$ 3000,00"),
+        ("4", "Acima de R$ 4000,00"),
+    )
+    ESCOLARIDADE = (
+        ("1", "Ensino Fundamental"),
+        ("2", "Ensino Médio"),
+        ("3", "Tecnológo"),
+        ("4", "Ensino Superior"),
+        ("5", "Pos Graduação, MBA, Mestrado"),
+        ("6", "Doutorado"),
+    )
+    nome_vaga = models.CharField(verbose_name="Descrição da vaga", max_length=255)
+    faixa_salaria = models.CharField(verbose_name="Faixa Salarial", max_length=1, choices=FAIXA_SALARIAL)
+    requisitos = models.CharField(verbose_name="Requisitos", max_length=500)
+    escolaridade_min = models.CharField(verbose_name="Escolaridade Minima", max_length=1, choices=ESCOLARIDADE)
+    empresa_responsavel = models.ForeignKey(Empresa, on_delete=models.CASCADE)
