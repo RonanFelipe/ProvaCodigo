@@ -1,6 +1,50 @@
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+{% extends 'base.html' %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">Login</h3>
+                <p class="subtitle has-text-grey">Por favor faça login para continuar.</p>
+                <div class="box">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {{ form.source.errors }}
+                        {{ form.source }}
+
+                        <h2 class="title">Login</h2>
+                        <div class="field fieldWrapper">
+                            {{ form.email.errors }}
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" id="username" name="username" value="{{ email }}" type="email" placeholder="Email">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field fieldWrapper">
+                            {{ form.password.errors }}
+                            <p class="control has-icons-left">
+                                <input class="input" id="password" name="password" value="{{ password }}" type="password" placeholder="Password">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control">
+                                <button class="button is-success">
+                                    Login
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
