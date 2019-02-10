@@ -109,4 +109,4 @@ class Candidato(models.Model):
     candidato = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     pretensao_salarial = models.FloatField(verbose_name="Pretensão salarial")
     experiencia = models.TextField(verbose_name="Experiência do usuário", max_length=500)
-    escolaridade = models.CharField(verbose_name="Nível de escolaridade", max_length=1, choices=ESCOLARIDADE)
+    escolaridade = models.CharField(verbose_name="Nível de escolaridade", max_length=1, choices=ESCOLARIDADE, blank=True, null=True)

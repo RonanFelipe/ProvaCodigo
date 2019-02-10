@@ -10,6 +10,10 @@ def index(request):
     return render(request, 'base.html')
 
 
+def success(request):
+    return render(request, 'success.html')
+
+
 @login_required(login_url='/accounts/login')
 def home(request):
     return render(request, 'success.html')

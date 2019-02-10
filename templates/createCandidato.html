@@ -1,6 +1,19 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form1.as_p }}
-    {{ form2.as_p }}
-    <button type="submit">Submit</button>
-</form>
+{% extends 'base.html' %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form1.non_field_errors }}
+                {{ form1.source.errors }}
+                {{ form1.source }}
+                {{ form2.non_field_errors }}
+                {{ form2.source.errors }}
+                {{ form2.source }}
+                {{ form1.as_p }}
+                {{ form2.as_p }}
+                <button class="button is-success" type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
