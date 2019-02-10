@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.urls import reverse
 
 from provaDeConceito import settings
 
@@ -133,3 +134,9 @@ class Vaga(models.Model):
     requisitos = models.CharField(verbose_name="Requisitos", max_length=500)
     escolaridade_min = models.CharField(verbose_name="Escolaridade Minima", max_length=1, choices=ESCOLARIDADE)
     empresa_responsavel = models.ForeignKey(Empresa, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('vaga_details', args=[str(self.id)])
+
+    def __str__(self):
+        return self.nome_vaga

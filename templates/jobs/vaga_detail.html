@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Vaga: {{ vaga }}</h1>
+    <p>{{ vaga.nome_vaga }}</p>
+    <p>{{ vaga.empresa_responsavel }}</p>
+    <p>{{ vaga.escolaridade_min }}</p>
+    <p>{{ vaga.faixa_salaria }}</p>
+    <p>{{ vaga.requisitos }}</p>
+{% endblock %}

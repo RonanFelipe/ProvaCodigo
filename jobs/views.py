@@ -66,6 +66,7 @@ class VagaDetail(generic.DetailView):
 class CreateVaga(CreateView):
     model = Vaga
     fields = '__all__'
+    success_url = reverse_lazy('vagas')
 
 
 class UpdateVaga(UpdateView):
