@@ -19,3 +19,9 @@ class SignUpFormEmpresa(forms.ModelForm):
     class Meta:
         model = Empresa
         exclude = ('empresa',)
+
+
+class SignUpFormCandidato(forms.ModelForm):
+    class Meta:
+        model = Candidato
+        exclude = ('candidato',)
