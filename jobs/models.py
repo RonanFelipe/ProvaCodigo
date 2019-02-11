@@ -93,6 +93,10 @@ class Empresa(models.Model):
     empresa = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cnpj = models.BigIntegerField(verbose_name="CNPJ da empresa")
     atividade = models.CharField(verbose_name="Atividade principal da empresa", max_length=255)
+    nome_empresa = models.CharField(verbose_name="Nome da Empresa", max_length=255)
+
+    def __str__(self):
+        return self.nome_empresa
 
 
 class Candidato(models.Model):
