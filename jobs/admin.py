@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import MyUser, Empresa, Candidato, Vaga
+from .models import MyUser, Empresa, Candidato, Vaga, InscricaoVaga
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
@@ -75,3 +75,4 @@ admin.site.register(MyUser, UserAdmin)
 admin.site.register(Empresa)
 admin.site.register(Candidato)
 admin.site.register(Vaga)
+admin.site.register(InscricaoVaga)

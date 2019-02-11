@@ -144,3 +144,11 @@ class Vaga(models.Model):
 
     def __str__(self):
         return self.nome_vaga
+
+
+class InscricaoVaga(models.Model):
+    candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
+    vaga = models.ForeignKey(Vaga, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.candidato.candidato.name + " - " + self.vaga.nome_vaga
