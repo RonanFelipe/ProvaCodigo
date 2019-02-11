@@ -149,6 +149,7 @@ class Vaga(models.Model):
 class InscricaoVaga(models.Model):
     candidato = models.ForeignKey(Candidato, on_delete=models.CASCADE)
     vaga = models.ForeignKey(Vaga, on_delete=models.CASCADE)
+    mensagem = models.CharField(verbose_name="Mensagem ao recrutador", max_length=255)
 
     def __str__(self):
         return self.candidato.candidato.name + " - " + self.vaga.nome_vaga

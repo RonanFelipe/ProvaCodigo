@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic import CreateView, UpdateView, DeleteView
 
-from .forms import SignUpForm, SignUpFormEmpresa, SignUpFormCandidato
-from .models import Vaga
+from .forms import SignUpForm, SignUpFormEmpresa, SignUpFormCandidato, IncreverVagaForm
+from .models import Vaga, InscricaoVaga, Candidato, Empresa
 
 
 # Create your views here.
@@ -18,9 +19,26 @@ def success(request):
     return render(request, 'success.html')
 
 
+def home_candidato(request):
+    return render(request, 'homeCandidato.html')
+
+
+def home_empresa(request):
+    return render(request, 'homeEmpresa.html')
+
+
 @login_required(login_url='/accounts/login')
 def home(request):
-    return render(request, 'success.html')
+    try:
+        if Candidato.objects.get(candidato=request.user):
+            return redirect('home_to_candidato')
+    except Candidato.DoesNotExist:
+        pass
+    try:
+        if Empresa.objects.get(empresa=request.user):
+            return redirect('home_to_empresa')
+    except Empresa.DoesNotExist:
+        return redirect('login')
 
 
 def signup_empresa(request):
@@ -77,3 +95,23 @@ class UpdateVaga(UpdateView):
 class DeleteVaga(DeleteView):
     model = Vaga
     success_url = reverse_lazy('vagas')
+
+
+def inscrever_vaga(request, pk):
+    vaga = get_object_or_404(Vaga, pk=pk)
+    if request.method == 'POST':
+        form = IncreverVagaForm(request.POST)
+        if form.is_valid():
+            mensagem = form.cleaned_data['mensagem']
+            candidato = request.user
+            inscricao = InscricaoVaga(vaga=vaga, candidato=candidato, mensagem=mensagem)
+            inscricao.save()
+            return HttpResponseRedirect(reverse('vagas'))
+        else:
+            form = InscricaoVaga()
+            context = {
+                'form': form,
+                'vaga': vaga,
+            }
+
+        return render(request, '', context)
