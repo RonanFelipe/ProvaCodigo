@@ -6,4 +6,9 @@
     <p>{{ vaga.get_escolaridade_min_display }}</p>
     <p>{{ vaga.get_faixa_salaria_display }}</p>
     <p>{{ vaga.requisitos }}</p>
+    <form method="post" action="{% url 'inscrever_vaga' vaga.id %}">
+        {% csrf_token %}
+        <input type="submit">
+    </form>
+
 {% endblock %}

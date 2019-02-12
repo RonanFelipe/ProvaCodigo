@@ -9,9 +9,11 @@ urlpatterns = [
     path('home/', jobs_views.home, name='home'),
     path('homeEmpresa/', jobs_views.home_empresa, name='home_to_empresa'),
     path('homeCandidato/', jobs_views.home_candidato, name='home_to_candidato'),
+    path('<int:pk>/inscrever', jobs_views.inscrever_vaga, name='inscrever_vaga'),
     path('vaga/', jobs_views.VagaListView.as_view(), name='vagas'),
     path('vaga/<int:pk>', jobs_views.VagaDetail.as_view(), name='vaga_details'),
     path('vaga/create/', jobs_views.CreateVaga.as_view(), name='create_vaga'),
     path('vaga/<int:pk>/update/', jobs_views.UpdateVaga.as_view(), name='update_vaga'),
     path('vaga/<int:pk>/delete/', jobs_views.DeleteVaga.as_view(), name='delete_vaga'),
+    path('errorDuplicate/', jobs_views.error_duplicate, name='duplicate'),
 ]

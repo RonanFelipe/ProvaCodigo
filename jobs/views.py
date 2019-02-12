@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -98,20 +99,16 @@ class DeleteVaga(DeleteView):
 
 
 def inscrever_vaga(request, pk):
-    vaga = get_object_or_404(Vaga, pk=pk)
     if request.method == 'POST':
-        form = IncreverVagaForm(request.POST)
-        if form.is_valid():
-            mensagem = form.cleaned_data['mensagem']
-            candidato = request.user
-            inscricao = InscricaoVaga(vaga=vaga, candidato=candidato, mensagem=mensagem)
+        try:
+            inscricao = InscricaoVaga()
+            inscricao.vaga = Vaga.objects.get(id=pk)
+            inscricao.candidato = Candidato.objects.get(candidato=request.user)
             inscricao.save()
-            return HttpResponseRedirect(reverse('vagas'))
-        else:
-            form = InscricaoVaga()
-            context = {
-                'form': form,
-                'vaga': vaga,
-            }
+        except IntegrityError as e:
+            return redirect("duplicate")
+    return redirect('vagas')
 
-        return render(request, '', context)
+
+def error_duplicate(request):
+    return render(request, 'duplicate_error.html')
