@@ -1,0 +1,25 @@
+<nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'home_to_empresa' %}">
+                <strong>Empresa Home</strong>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-info">
+                        <strong>Home</strong>
+                    </a>
+                    <a class="button is-primary">
+                        <strong>Criar Vaga</strong>
+                    </a>
+                    <a class="button is-link">
+                        <strong>Ver inscrições feitas</strong>
+                    </a>
+                    <a class="button is-danger" href="{% url 'logout' %}">
+                        <strong>Logout</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>

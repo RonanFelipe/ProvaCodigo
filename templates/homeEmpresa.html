@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div>
+        {% include "jobs/navbar.html" %}
+    </div>
     Empresa Home
     <p>
         <a href="{% url 'logout' %}">logout</a>
