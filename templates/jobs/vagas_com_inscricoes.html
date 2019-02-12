@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        {% if inscricaovaga_list %}
+            <ul>
+                {% for inscricao in inscricaovaga_list %}
+                <li>
+                    <div>
+                        Vaga = {{ inscricao }}
+                        Nome Candidato = {{ inscricao.candidato.candidato.first_name }}
+                        Escolaridade Candidato = {{ inscricao.candidato.escolaridade }}
+                        Pretensão Salarial do Candidato = {{ inscricao.candidato.pretensao_salarial }}
+                        Experiência do Candidato = {{ inscricao.candidato.experiencia }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+
+        {% endif %}
+    </div>
+{% endblock %}

@@ -112,3 +112,11 @@ def inscrever_vaga(request, pk):
 
 def error_duplicate(request):
     return render(request, 'duplicate_error.html')
+
+
+class InscricoesVagasListView(generic.ListView):
+    model = InscricaoVaga
+    template_name = 'jobs/vagas_com_inscricoes.html'
+
+    def get_queryset(self):
+        return InscricaoVaga.objects.all()

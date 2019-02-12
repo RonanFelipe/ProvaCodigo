@@ -154,4 +154,4 @@ class InscricaoVaga(models.Model):
         unique_together = ("candidato", "vaga")
 
     def __str__(self):
-        return self.candidato.candidato.name + " - " + self.vaga.nome_vaga
+        return self.vaga.nome_vaga
