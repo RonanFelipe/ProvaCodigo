@@ -7,18 +7,26 @@
         {% if inscricaovaga_list %}
             <ul>
                 {% for inscricao in inscricaovaga_list %}
-                <li>
-                    <div>
-                        Vaga = {{ inscricao }}
-                        Nome Candidato = {{ inscricao.candidato.candidato.first_name }}
-                        Escolaridade Candidato = {{ inscricao.candidato.escolaridade }}
-                        Pretensão Salarial do Candidato = {{ inscricao.candidato.pretensao_salarial }}
-                        Experiência do Candidato = {{ inscricao.candidato.experiencia }}
+                    <div class="task-container column is-multiline">
+                        <div class="card column is-half is-offset-one-quarter">
+                            <header class="card-header">
+                            <p class="card-header-title">Vaga: {{ inscricao }}</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p>Nome Candidato: {{ inscricao.candidato.candidato.first_name }} </p>
+                                <p>Escolaridade: {{ inscricao.candidato.escolaridade }} </p>
+                                <p>Pretensão Salarial: {{ inscricao.candidato.pretensao_salarial }} </p>
+                                <p>Experiência do Candidato: {{ inscricao.candidato.experiencia }} </p>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{% url 'vaga_empresa_details' inscricao.vaga.id %}">
+                                Detalhes da Vaga
+                            </a>
+                        </footer>
+                        </div>
                     </div>
-                </li>
-                    <a href="{% url 'vaga_empresa_details' inscricao.vaga.id %}">
-                        Detalhes da vaga
-                    </a>
                 {% endfor %}
             </ul>
         {% else %}
