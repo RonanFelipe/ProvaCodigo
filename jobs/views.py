@@ -1,13 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from django.http import HttpResponseRedirect
 
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView, UpdateView, DeleteView
 
-from .forms import SignUpForm, SignUpFormEmpresa, SignUpFormCandidato, IncreverVagaForm
+from .forms import SignUpForm, SignUpFormEmpresa, SignUpFormCandidato
 from .models import Vaga, InscricaoVaga, Candidato, Empresa
 
 
