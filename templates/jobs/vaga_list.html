@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Lista de Vagas</h1>
-    {% if vaga_list %}
-        <ul>
-            {% for vaga in vaga_list %}
-                <li>
-                    <a href="{{ vaga.get_absolute_url }}">
-                        {{ vaga.nome_vaga }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Não há vagas cadastradas</p>
-    {% endif %}
+    <div>
+        {% include "jobs/navbar_candidato.html" %}
+    </div>
+    <div class="section">
+        <div class="container">
+            <h2 class="title">
+                Lista de Vagas
+            </h2>
+            {% if vaga_list %}
+                {% for vaga in vaga_list %}
+                    <div class="columns">
+                        <div class="column">
+                            <a href="{{ vaga.get_absolute_url }}">
+                                {{ vaga.nome_vaga }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div>Não há vagas cadastradas.</div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

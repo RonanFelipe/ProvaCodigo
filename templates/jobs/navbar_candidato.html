@@ -1,0 +1,22 @@
+<nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'home_to_candidato' %}">
+                <strong>Candidato Home</strong>
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-info" href="{% url 'home_to_candidato' %}">
+                        <strong>Home</strong>
+                    </a>
+                    <a class="button is-link" href="{% url 'vagas' %}">
+                        <strong>Ver vagas</strong>
+                    </a>
+                    <a class="button is-danger" href="{% url 'logout' %}">
+                        <strong>Logout</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>

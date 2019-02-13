@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    Candidato Home.
-    <p>
-        <a href="{% url 'logout' %}">logout</a>
-    </p>
-    <p>
-        <a href="{% url 'vagas' %}">Vagas</a>
-    </p>
+    <div>
+        {% include "jobs/navbar_candidato.html" %}
+    </div>
+    <div class="section">
+        <div class="container">
+            <h2 class="subtitle">
+                Bem Vindo {{ request.user }}
+            </h2>
+        </div>
+    </div>
 {% endblock %}
