@@ -3,14 +3,11 @@
     <div>
         {% include "jobs/navbar.html" %}
     </div>
-    Empresa Home
-    <p>
-        <a href="{% url 'logout' %}">logout</a>
-    </p>
-    <p>
-        <a href="{% url 'create_vaga' %}">Criar Vaga</a>
-    </p>
-    <p>
-        <a href="{% url 'inscricoes_feitas' %}">Ver inscrições feitas</a>
-    </p>
+    <div class="section">
+        <div class="container">
+            <h2 class="subtitle">
+                Bem Vindo {{ request.user }}
+            </h2>
+        </div>
+    </div>
 {% endblock %}

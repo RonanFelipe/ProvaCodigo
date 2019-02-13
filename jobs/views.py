@@ -82,6 +82,11 @@ class VagaDetail(generic.DetailView):
     model = Vaga
 
 
+class VagaDetailEmpresa(generic.DetailView):
+    model = Vaga
+    template_name = 'jobs/listVaga_empresa.html'
+
+
 class CreateVaga(CreateView):
     model = Vaga
     fields = '__all__'
@@ -95,7 +100,7 @@ class UpdateVaga(UpdateView):
 
 class DeleteVaga(DeleteView):
     model = Vaga
-    success_url = reverse_lazy('vagas')
+    success_url = reverse_lazy('inscricoes_feitas')
 
 
 def inscrever_vaga(request, pk):

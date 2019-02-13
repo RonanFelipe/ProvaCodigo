@@ -17,4 +17,6 @@ urlpatterns = [
     path('vaga/<int:pk>/delete/', jobs_views.DeleteVaga.as_view(), name='delete_vaga'),
     path('errorDuplicate/', jobs_views.error_duplicate, name='duplicate'),
     path('inscricoesFeitas/', jobs_views.InscricoesVagasListView.as_view(), name='inscricoes_feitas'),
+    path('vagaDetail/<int:pk>', jobs_views.VagaDetailEmpresa.as_view(), name='vaga_empresa_details'),
+
 ]

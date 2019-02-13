@@ -7,13 +7,13 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-info">
+                    <a class="button is-info" href="{% url 'home_to_empresa' %}">
                         <strong>Home</strong>
                     </a>
-                    <a class="button is-primary">
+                    <a class="button is-primary" href="{% url 'create_vaga' %}">
                         <strong>Criar Vaga</strong>
                     </a>
-                    <a class="button is-link">
+                    <a class="button is-link" href="{% url 'inscricoes_feitas' %}">
                         <strong>Ver inscrições feitas</strong>
                     </a>
                     <a class="button is-danger" href="{% url 'logout' %}">

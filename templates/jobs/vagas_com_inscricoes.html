@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <div>
+        {% include "jobs/navbar.html" %}
+    </div>
+    <div>
         {% if inscricaovaga_list %}
             <ul>
                 {% for inscricao in inscricaovaga_list %}
@@ -13,6 +16,9 @@
                         Experiência do Candidato = {{ inscricao.candidato.experiencia }}
                     </div>
                 </li>
+                    <a href="{% url 'vaga_empresa_details' inscricao.vaga.id %}">
+                        Detalhes da vaga
+                    </a>
                 {% endfor %}
             </ul>
         {% else %}
